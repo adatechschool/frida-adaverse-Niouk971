@@ -6,6 +6,10 @@ export const promotions = [
 export const projects = [
     { type: "Adaopte", name: "Adaopte" },
     { type: "Ada Quiz", name: "Ada Quiz" },
+    { type: "Ada Check Event", name: "Ada Check Event" },
+    { type: "Adaence", name: "Adaence" },
+    { type: "Adaverse", name: "Adaverse" },
+    { type: "Dataviz", name: "Dataviz" },
 ];
 
 // Ici on indique directement projectType et promoName
@@ -13,7 +17,7 @@ export const studentsProjects = [
     {
         projectType: "Adaopte",
         promoName: "Frida",
-        title: "Adaopte - Frida - John",
+        title: "frida-adaopte-john",
         imageUrl: "https://example.com/adaopte-frida.jpg",
         customUrl: "https://adaopte.frida.example",
         githubUrl: "https://github.com/florian/adaopte-frida",
@@ -23,7 +27,7 @@ export const studentsProjects = [
     {
         projectType: "Ada Quiz",
         promoName: "Frances",
-        title: "Ada Quiz - Frances - Doe",
+        title: "frances-ada-quiz-doe",
         imageUrl: "https://example.com/portfolios-ada.jpg",
         customUrl: "https://portfolios.ada.example",
         githubUrl: "https://github.com/florian/portfolios-ada",
