@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "seed": "tsx seed/index.ts",
+    "seed:dev": "tsx seed/dev-seed.ts",
+    "seed:prod": "tsx seed/prod-seed.ts",
+    "seed:check": "tsx seed/check-seed.ts",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -13,6 +17,8 @@
     "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.0.2",
+    "dotenv": "^17.2.3",
     "drizzle-orm": "^0.44.7",
     "next": "16.0.3",
     "pg": "^8.16.3",
@@ -29,6 +35,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.0.3",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }
