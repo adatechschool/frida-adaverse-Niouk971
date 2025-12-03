@@ -37,6 +37,7 @@ async function main() {
         await db.insert(studentsProjectsTable).values({
             projectId,
             promotionId,
+            projectCategory: sp.projectCategory, // ⚡️ obligatoire
             title: sp.title,
             imageUrl: sp.imageUrl,
             customUrl: sp.customUrl,

@@ -1,5 +1,5 @@
 {
-  "id": "5c0efdd6-24ca-4338-b09d-24cd25e99404",
+  "id": "c9437ed2-a3fb-4134-938c-d3baaa75aa1b",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -28,11 +28,17 @@
         }
       },
       "indexes": {
-        "projects_type_unique": {
-          "name": "projects_type_unique",
+        "projects_type_name_unique": {
+          "name": "projects_type_name_unique",
           "columns": [
             {
               "expression": "type",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "name",
               "isExpression": false,
               "asc": true,
               "nulls": "last"
@@ -117,6 +123,13 @@
         "promotion_id": {
           "name": "promotion_id",
           "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "project_category": {
+          "name": "project_category",
+          "type": "project_category",
+          "typeSchema": "public",
           "primaryKey": false,
           "notNull": true
         },
@@ -222,7 +235,17 @@
       "isRLSEnabled": false
     }
   },
-  "enums": {},
+  "enums": {
+    "public.project_category": {
+      "name": "project_category",
+      "schema": "public",
+      "values": [
+        "ada",
+        "personal",
+        "hackathon"
+      ]
+    }
+  },
   "schemas": {},
   "sequences": {},
   "roles": {},

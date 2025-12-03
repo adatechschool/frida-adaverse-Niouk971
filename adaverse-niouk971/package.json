@@ -15,6 +15,7 @@
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
+    "db:drop": "psql $DATABASE_URL -f reset.sql",
     "db:reset": "rm -rf lib/db/migrations && npm run db:generate && npm run db:migrate && npm run seed:dev && npm run seed:check"
   },
   "dependencies": {
@@ -32,6 +33,7 @@
     "@types/pg": "^8.15.6",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "baseline-browser-mapping": "^2.8.32",
     "drizzle-kit": "^0.31.7",
     "eslint": "^9",
     "eslint-config-next": "16.0.3",

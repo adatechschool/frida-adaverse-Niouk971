@@ -1,3 +1,4 @@
+CREATE TYPE "public"."project_category" AS ENUM('ada', 'personal', 'hackathon');--> statement-breakpoint
 CREATE TABLE "projects" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"type" varchar(255) NOT NULL,
@@ -14,6 +15,7 @@ CREATE TABLE "students_projects" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"project_id" integer NOT NULL,
 	"promotion_id" integer NOT NULL,
+	"project_category" "project_category" NOT NULL,
 	"title" varchar(255) NOT NULL,
 	"image_url" varchar(255) NOT NULL,
 	"custom_url" varchar(255) NOT NULL,
@@ -25,6 +27,6 @@ CREATE TABLE "students_projects" (
 --> statement-breakpoint
 ALTER TABLE "students_projects" ADD CONSTRAINT "students_projects_project_id_projects_id_fk" FOREIGN KEY ("project_id") REFERENCES "public"."projects"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "students_projects" ADD CONSTRAINT "students_projects_promotion_id_promotions_id_fk" FOREIGN KEY ("promotion_id") REFERENCES "public"."promotions"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
-CREATE UNIQUE INDEX "projects_type_unique" ON "projects" USING btree ("type");--> statement-breakpoint
+CREATE UNIQUE INDEX "projects_type_name_unique" ON "projects" USING btree ("type","name");--> statement-breakpoint
 CREATE UNIQUE INDEX "promotions_name_unique" ON "promotions" USING btree ("name");--> statement-breakpoint
 CREATE UNIQUE INDEX "students_projects_unique_project_promo" ON "students_projects" USING btree ("project_id","promotion_id");

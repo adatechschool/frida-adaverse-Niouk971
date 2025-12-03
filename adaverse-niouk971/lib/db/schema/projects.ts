@@ -5,5 +5,6 @@ export const projectsTable = pgTable("projects", {
     type: varchar("type", { length: 255 }).notNull(),
     name: varchar("name", { length: 255 }).notNull(),
 }, (table) => [
-    uniqueIndex("projects_type_unique").on(table.type),
+    // ⚡️ Unicité sur la combinaison type + name
+    uniqueIndex("projects_type_name_unique").on(table.type, table.name),
 ]);

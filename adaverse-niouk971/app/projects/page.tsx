@@ -1,24 +1,30 @@
-import Link from "next/link";
 import { getAllStudentProjects } from "@/lib/db/actions/studentsProjects";
 import { ProjectCard } from "./ProjectCard";
 import { generateSlug } from "@/utils/slug";
+import Navbar from "@/app/components/Navbar"; // <-- import de ta Navbar
 
 export default async function ProjectsPage() {
-  // Récupère tous les projets étudiants avec leurs jointures
   const projects = await getAllStudentProjects();
+  const published = projects.filter((p) => p.publishedAt !== null);
+
+  // Préparer les projets pour le select de la Navbar
+  const navbarProjects = published.map((p) => ({
+    id: p.id,
+    name: p.title,
+  }));
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
-      {projects.map((p) => {
-        // Génère un slug unique à partir du type de projet et du nom de la promo
-        const slug = generateSlug(p.project.type, p.promotion.name);
+    <>
+      {/* Navbar en haut */}
+      <Navbar projects={navbarProjects} />
 
-        return (
-          <Link key={p.id} href={`/projects/${slug}`}>
-            <ProjectCard project={p} />
-          </Link>
-        );
-      })}
-    </div>
+      {/* Grille des cartes */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
+        {published.map((p) => {
+          const slug = generateSlug(p.project.type, p.promotion.name);
+          return <ProjectCard key={p.id} project={p} slug={slug} />;
+        })}
+      </div>
+    </>
   );
 }
